@@ -1,4 +1,0 @@
-Sharpogram
-==========
-
-Telegram for Windows
