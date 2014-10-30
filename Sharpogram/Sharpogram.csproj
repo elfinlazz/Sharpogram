@@ -71,18 +71,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Telegram\TL\StreamingUtils.cs" />
-    <Compile Include="Telegram\TL\TLBoolFalse.cs" />
-    <Compile Include="Telegram\TL\TLBoolTrue.cs" />
-    <Compile Include="Telegram\TL\TLBytes.cs" />
-    <Compile Include="Telegram\TL\TLContext.cs" />
-    <Compile Include="Telegram\TL\TLGzipObject.cs" />
-    <Compile Include="Telegram\TL\TLIntVector.cs" />
-    <Compile Include="Telegram\TL\TLLongVector.cs" />
-    <Compile Include="Telegram\TL\TLMethod.cs" />
-    <Compile Include="Telegram\TL\TLObject.cs" />
-    <Compile Include="Telegram\TL\TLStringVector.cs" />
-    <Compile Include="Telegram\TL\TLVector.cs" />
+    <Compile Include="Telegram\TLCore\StreamingUtils.cs" />
+    <Compile Include="Telegram\TLCore\TLBoolFalse.cs" />
+    <Compile Include="Telegram\TLCore\TLBoolTrue.cs" />
+    <Compile Include="Telegram\TLCore\TLBytes.cs" />
+    <Compile Include="Telegram\TLCore\TLContext.cs" />
+    <Compile Include="Telegram\TLCore\TLGzipObject.cs" />
+    <Compile Include="Telegram\TLCore\TLIntVector.cs" />
+    <Compile Include="Telegram\TLCore\TLLongVector.cs" />
+    <Compile Include="Telegram\TLCore\TLMethod.cs" />
+    <Compile Include="Telegram\TLCore\TLObject.cs" />
+    <Compile Include="Telegram\TLCore\TLStringVector.cs" />
+    <Compile Include="Telegram\TLCore\TLVector.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

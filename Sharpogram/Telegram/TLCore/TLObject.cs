@@ -7,7 +7,7 @@ using System.IO;
 using Ionic.Crc;
 using System.Runtime.Serialization;
 
-namespace Telegram.TL
+namespace Telegram.TLCore
 {
     /**
      * Basic class for all tl-objects. Contains methods for serializing and deserializing object.

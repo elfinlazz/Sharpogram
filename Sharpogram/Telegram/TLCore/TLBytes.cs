@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Telegram.TL
+namespace Telegram.TLCore
 {
     /**
     * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)

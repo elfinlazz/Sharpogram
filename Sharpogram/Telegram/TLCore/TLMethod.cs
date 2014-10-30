@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Telegram.TL
+namespace Telegram.TLCore
 {
     /**
      * Basic object for RPC methods. It contains special methods for deserializing result of RPC method call.

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
 
-using Telegram.TL;
+using Telegram.TLCore;
 
-namespace Telegram.TL
+namespace Telegram.TLCore
 {
     /**
      * Helper class for writing and reading data for tl (de-)serialization.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.IO.Compression;
 
-namespace Telegram.TL
+namespace Telegram.TLCore
 {
     /**
  * TypeLanguage context object. It performs deserialization of objects and vectors.

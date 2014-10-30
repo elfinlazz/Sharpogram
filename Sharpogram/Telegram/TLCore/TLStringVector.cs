@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Telegram.TL
+namespace Telegram.TLCore
 {
     /**
      * TL Vector of strings. @see org.telegram.tl.TLVector
