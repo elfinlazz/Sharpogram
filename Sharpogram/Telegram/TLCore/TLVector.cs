@@ -16,7 +16,7 @@ namespace Telegram.TLCore
      * @param <T> type of elements in vector
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public class TLVector<T> : TLObject/*, List<T>*/ {
+    public class TLVector<T> : TLObject, List<T> {
 
         public static readonly uint CLASS_ID = 0x1cb5c415;
         
