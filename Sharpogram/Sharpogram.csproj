@@ -71,6 +71,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Telegram\MTProto\log\Logger.cs" />
+    <Compile Include="Telegram\MTProto\log\LogInterface.cs" />
+    <Compile Include="Telegram\MTProto\state\AbsMTProtoState.cs" />
+    <Compile Include="Telegram\MTProto\state\ConnectionInfo.cs" />
+    <Compile Include="Telegram\MTProto\state\KnownSalt.cs" />
+    <Compile Include="Telegram\MTProto\state\MemoryProtoState.cs" />
+    <Compile Include="Telegram\MTProto\time\TimeOverlord.cs" />
     <Compile Include="Telegram\TLCore\StreamingUtils.cs" />
     <Compile Include="Telegram\TLCore\TLBoolFalse.cs" />
     <Compile Include="Telegram\TLCore\TLBoolTrue.cs" />
@@ -125,6 +132,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

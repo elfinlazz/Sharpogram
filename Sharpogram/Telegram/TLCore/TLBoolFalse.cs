@@ -13,9 +13,9 @@ namespace Telegram.TLCore
      */
     public class TLBoolFalse : TLObject {
 
-        public const uint CLASS_ID = 0xbc799737;
+        public static readonly uint CLASS_ID = 0xbc799737;
 
-        new public static uint getClassId() {
+        override public uint getClassId() {
             return CLASS_ID;
         }
 

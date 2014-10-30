@@ -19,14 +19,14 @@ namespace Telegram.TLCore
      *
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public /*abstract*/ class TLObject : Object/*, CRC32*/ {
+    public abstract class TLObject : Object/*, CRC32*/ {
 
         /**
          * Getting TL Class identification
          *
          * @return id of class
          */
-        public uint getClassId() { return (uint)0; }
+        public abstract uint getClassId();
 
         /**
          * Serializing object to byte array

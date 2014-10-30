@@ -151,10 +151,10 @@ namespace Telegram.TLCore
         public static void writeTLBool(Boolean v, /*OutputStream*/ StreamWriter stream) {
             try {
                 if (v) {
-                    writeInt(TLBoolTrue.getClassId(), stream);
+                    writeInt(TLBoolTrue.CLASS_ID, stream);
                     
                 } else {
-                    writeInt(TLBoolFalse.getClassId(), stream);
+                    writeInt(TLBoolFalse.CLASS_ID, stream);
                 }
             } catch (IOException e) {
                 System.Diagnostics.Debug.WriteLine(e.StackTrace);
@@ -703,9 +703,9 @@ namespace Telegram.TLCore
         public static Boolean readTLBool(/*InputStream*/ BufferedStream  stream) {
             try {
                 int v = readInt(stream);
-                if (v == TLBoolTrue.getClassId()) {
+                if (v == TLBoolTrue.CLASS_ID) {
                     return true;
-                } else if (v == TLBoolFalse.getClassId()) {
+                } else if (v == TLBoolFalse.CLASS_ID) {
                     return false;
                 } else
                     throw new /*DeserializeException*/ Exception("Not bool value: " + v.ToString("X") );

@@ -14,9 +14,9 @@ namespace Telegram.TLCore
  * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
  */
 public class TLGzipObject : TLObject {
-    private const int CLASS_ID = 0x3072CFA1;
+    public static readonly uint CLASS_ID = 0x3072CFA1;
 
-    new public static int getClassId() {
+    override public uint getClassId() {
         return CLASS_ID;
     }
 

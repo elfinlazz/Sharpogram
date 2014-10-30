@@ -18,14 +18,14 @@ namespace Telegram.TLCore
      */
     public class TLVector<T> : TLObject/*, List<T>*/ {
 
-        private const uint CLASS_ID = 0x1cb5c415;
+        public static readonly uint CLASS_ID = 0x1cb5c415;
         
        /* private Object destClass = Type.ReflectionOnlyGetType("TLObject", true, false);*/
         private Object destClass = typeof(TLObject);
 
         private List<T> items = new List<T>();
 
-        new public static uint getClassId() {
+        override public uint getClassId() {
             return CLASS_ID;
         }
 

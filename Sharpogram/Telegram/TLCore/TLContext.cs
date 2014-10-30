@@ -78,7 +78,7 @@ public abstract class TLContext {
 
     public TLObject deserializeMessage(int clazzId, /*InputStream*/BufferedStream stream) {
         try {
-            if (clazzId == TLGzipObject.getClassId()) {
+            if (clazzId == TLGzipObject.CLASS_ID) {
                 TLGzipObject obj = new TLGzipObject();
                 obj.deserializeBody(stream, this);
                 BufferedStream gzipInputStream = new BufferedStream(new GZipStream(new MemoryStream(obj.getPackedData()), CompressionMode.Decompress));
@@ -86,11 +86,11 @@ public abstract class TLContext {
                 return deserializeMessage(innerClazzId, gzipInputStream);
             }
 
-            if (clazzId == TLBoolTrue.getClassId()) {
+            if (clazzId == TLBoolTrue.CLASS_ID) {
                 return new TLBoolTrue();
             }
 
-            if (clazzId == TLBoolFalse.getClassId()) {
+            if (clazzId == TLBoolFalse.CLASS_ID) {
                 return new TLBoolFalse();
             }
 
@@ -142,12 +142,12 @@ public abstract class TLContext {
             byte[] byte_clazzId = new byte[] { };
             stream.Read(byte_clazzId, 0, (int)stream.Length);
             int clazzId = Convert.ToInt32(byte_clazzId);
-            if (clazzId == TLVector<Type>.getClassId()) {
+            if (clazzId == TLVector<Type>.CLASS_ID) {
 //                TLVector res = new TLVector();
                 TLVector<T> res = new TLVector<T>();
                 res.deserializeBody(stream, this);
                 return res;
-            } else if (clazzId == TLGzipObject.getClassId()) {
+            } else if (clazzId == TLGzipObject.CLASS_ID) {
                 TLGzipObject obj = new TLGzipObject();
                 obj.deserializeBody(stream, this);
                 BufferedStream gzipInputStream = new /*BufferedInputStream*/BufferedStream(new GZipStream(new /*ByteArrayInputStream*/MemoryStream(obj.getPackedData()), CompressionMode.Decompress));
@@ -168,11 +168,11 @@ public abstract class TLContext {
             stream.Read(byte_clazzId, 0, (int)stream.Length);
             int clazzId = Convert.ToInt32(byte_clazzId);
 
-            if (clazzId == TLVector<int>.getClassId()) {
+            if (clazzId == TLVector<int>.CLASS_ID) {
                 TLIntVector res = new TLIntVector();
                 res.deserializeBody(stream, this);
                 return res;
-            } else if (clazzId == TLGzipObject.getClassId()) {
+            } else if (clazzId == TLGzipObject.CLASS_ID) {
                 TLGzipObject obj = new TLGzipObject();
                 obj.deserializeBody(stream, this);
                 BufferedStream gzipInputStream = new /*BufferedInputStream*/BufferedStream(new GZipStream(new /*ByteArrayInputStream*/MemoryStream(obj.getPackedData()), CompressionMode.Decompress));
@@ -189,11 +189,11 @@ public abstract class TLContext {
     public TLLongVector deserializeLongVector(/*InputStream*/BufferedStream stream) {
         try {
             int clazzId = StreamingUtils.readInt(stream);
-            if (clazzId == TLVector<long>.getClassId()) {
+            if (clazzId == TLVector<long>.CLASS_ID) {
                 TLLongVector res = new TLLongVector();
                 res.deserializeBody(stream, this);
                 return res;
-            } else if (clazzId == TLGzipObject.getClassId()) {
+            } else if (clazzId == TLGzipObject.CLASS_ID) {
                 TLGzipObject obj = new TLGzipObject();
                 obj.deserializeBody(stream, this);
                 BufferedStream gzipInputStream = new /*BufferedInputStream*/BufferedStream(new GZipStream(new /*ByteArrayInputStream*/MemoryStream(obj.getPackedData()), CompressionMode.Decompress));
@@ -210,11 +210,11 @@ public abstract class TLContext {
     public TLStringVector deserializeStringVector(/*InputStream*/BufferedStream stream) {
         try {
             int clazzId = StreamingUtils.readInt(stream);
-            if (clazzId == TLVector<String>.getClassId()) {
+            if (clazzId == TLVector<String>.CLASS_ID) {
                 TLStringVector res = new TLStringVector();
                 res.deserializeBody(stream, this);
                 return res;
-            } else if (clazzId == TLGzipObject.getClassId()) {
+            } else if (clazzId == TLGzipObject.CLASS_ID) {
                 TLGzipObject obj = new TLGzipObject();
                 obj.deserializeBody(stream, this);
                 BufferedStream gzipInputStream = new /*BufferedInputStream*/BufferedStream(new GZipStream(new /*ByteArrayInputStream*/MemoryStream(obj.getPackedData()), CompressionMode.Decompress));
