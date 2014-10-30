@@ -1,10 +1,11 @@
 ﻿<Window x:Class="Sharpogram.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         Title="Sharpogram" Height="350" Width="525">
     <Grid>
         <Label Content="Auth" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="+79241652563" VerticalAlignment="Top" Width="120" Margin="200,31,0,0" MinLines="10"  />
+        <xctk:WatermarkTextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="200,31,0,0" MinLines="10" Watermark="+79241652563" />
         <Button Content="OK" HorizontalAlignment="Left" Margin="200,59,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
