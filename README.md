@@ -1,4 +1,5 @@
 Sharpogram
 ==========
 
-Telegram for Windows
+C# client of Telegram
+==========
