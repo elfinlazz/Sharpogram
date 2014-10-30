@@ -14,9 +14,9 @@ namespace Telegram.TL
  * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
  */
 public class TLGzipObject : TLObject {
-    public static const int CLASS_ID = 0x3072CFA1;
+    private const int CLASS_ID = 0x3072CFA1;
 
-    public int getClassId() {
+    new public static int getClassId() {
         return CLASS_ID;
     }
 
@@ -38,7 +38,7 @@ public class TLGzipObject : TLObject {
         this.packedData = packedData;
     }
 
-    public void serializeBody(/*OutputStream*/StreamWriter stream) {
+    new public void serializeBody(/*OutputStream*/StreamWriter stream) {
         try {
             StreamingUtils.writeTLBytes(packedData, stream);
         } catch(IOException e) {
@@ -46,7 +46,8 @@ public class TLGzipObject : TLObject {
         }
     }
 
-    public void deserializeBody(/*InputStream*/StreamReader stream, TLContext context) {
+    new public void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context)
+    {
         try {
             packedData = StreamingUtils.readTLBytes(stream);
         } catch(IOException e) {

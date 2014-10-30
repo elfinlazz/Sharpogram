@@ -19,14 +19,14 @@ namespace Telegram.TL
      *
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public abstract class TLObject : Object, CRC32 {
+    public /*abstract*/ class TLObject : Object/*, CRC32*/ {
 
         /**
          * Getting TL Class identification
          *
          * @return id of class
          */
-        public abstract uint getClassId();
+        public uint getClassId() { return (uint)0; }
 
         /**
          * Serializing object to byte array
@@ -37,7 +37,7 @@ namespace Telegram.TL
         public byte[] serialize() {
             try {
                 /*ByteArrayOutputStream*/
-                StreamWriter stream = new StreamWriter()/*ByteArrayOutputStream()*/;
+                StreamWriter stream = new StreamWriter("")/*ByteArrayOutputStream()*/;
                 serialize(stream);
 
                 var tmpStream = new MemoryStream();

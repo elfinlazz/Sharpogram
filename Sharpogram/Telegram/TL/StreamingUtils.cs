@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
-using System.IO.Stream;
 
 using Telegram.TL;
 
@@ -152,10 +151,10 @@ namespace Telegram.TL
         public static void writeTLBool(Boolean v, /*OutputStream*/ StreamWriter stream) {
             try {
                 if (v) {
-                    writeInt(TLBoolTrue.CLASS_ID, stream);
+                    writeInt(TLBoolTrue.getClassId(), stream);
                     
                 } else {
-                    writeInt(TLBoolFalse.CLASS_ID, stream);
+                    writeInt(TLBoolFalse.getClassId(), stream);
                 }
             } catch (IOException e) {
                 System.Diagnostics.Debug.WriteLine(e.StackTrace);
@@ -704,9 +703,9 @@ namespace Telegram.TL
         public static Boolean readTLBool(/*InputStream*/ BufferedStream  stream) {
             try {
                 int v = readInt(stream);
-                if (v == TLBoolTrue.CLASS_ID) {
+                if (v == TLBoolTrue.getClassId()) {
                     return true;
-                } else if (v == TLBoolFalse.CLASS_ID) {
+                } else if (v == TLBoolFalse.getClassId()) {
                     return false;
                 } else
                     throw new /*DeserializeException*/ Exception("Not bool value: " + v.ToString("X") );

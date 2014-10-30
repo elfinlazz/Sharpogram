@@ -16,7 +16,7 @@ namespace Telegram.TL
             setDestClass(typeof(String));
         }
 
-        public String toString() {
+        new public String toString() {
             return "vector<string>#1cb5c415";
         }
     }

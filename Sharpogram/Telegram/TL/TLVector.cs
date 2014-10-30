@@ -16,16 +16,16 @@ namespace Telegram.TL
      * @param <T> type of elements in vector
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public class TLVector<T> : TLObject, List<T> {
+    public class TLVector<T> : TLObject/*, List<T>*/ {
 
-        public static const uint CLASS_ID = 0x1cb5c415;
+        private const uint CLASS_ID = 0x1cb5c415;
         
        /* private Object destClass = Type.ReflectionOnlyGetType("TLObject", true, false);*/
         private Object destClass = typeof(TLObject);
 
         private List<T> items = new List<T>();
 
-        public uint getClassId() {
+        new public static uint getClassId() {
             return CLASS_ID;
         }
 
@@ -50,7 +50,7 @@ namespace Telegram.TL
             }
         }
 
-        public void serializeBody(/*OutputStream*/StreamWriter stream) {
+        new public void serializeBody(/*OutputStream*/StreamWriter stream) {
             stream.Write(items.Count);
             if (destClass is int) {
                 foreach (T i in items) {
@@ -71,7 +71,7 @@ namespace Telegram.TL
             }
         }
 
-        public void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context) {
+        new public void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context) {
             try {
                 if (destClass == null) {
                     throw new IOException("DestClass not set");
@@ -89,7 +89,7 @@ namespace Telegram.TL
                     }
                 }
             } catch (IOException e) {
-                
+                System.Diagnostics.Debug.WriteLine(e.StackTrace);
             }
         }
 
