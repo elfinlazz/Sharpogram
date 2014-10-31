@@ -98,9 +98,8 @@ namespace Telegram.TLCore
          * @param stream destination stream
          * @throws IOException
          */
-        public void serializeBody(/*OutputStream*/StreamWriter stream) {
-
-        }
+//        public void serializeBody(/*OutputStream*/StreamWriter stream) {}
+        public abstract void serializeBody(StreamWriter stream);
 
         /**
          * Deserializing object from stream and context
@@ -109,8 +108,9 @@ namespace Telegram.TLCore
          * @param context tl context
          * @throws IOException
          */
-        public void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context) {
-            CRC32 crc32 = new CRC32();
-        }
+//        public void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context) {
+//            CRC32 crc32 = new CRC32();
+//        }
+        public abstract void deserializeBody(BufferedStream stream, TLContext context);
     }
 }

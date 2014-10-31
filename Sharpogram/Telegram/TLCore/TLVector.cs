@@ -16,7 +16,7 @@ namespace Telegram.TLCore
      * @param <T> type of elements in vector
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public class TLVector<T> : TLObject, List<T> {
+    public class TLVector<T> : TLObject/*, List<T>*/ {
 
         public static readonly uint CLASS_ID = 0x1cb5c415;
         
@@ -50,7 +50,7 @@ namespace Telegram.TLCore
             }
         }
 
-        new public void serializeBody(/*OutputStream*/StreamWriter stream) {
+        public override void serializeBody(/*OutputStream*/StreamWriter stream) {
             stream.Write(items.Count);
             if (destClass is int) {
                 foreach (T i in items) {
@@ -71,7 +71,7 @@ namespace Telegram.TLCore
             }
         }
 
-        new public void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context) {
+        public override void deserializeBody(/*InputStream*/BufferedStream stream, TLContext context) {
             try {
                 if (destClass == null) {
                     throw new IOException("DestClass not set");

@@ -26,12 +26,6 @@ namespace Sharpogram
         public MainWindow()
         {
             InitializeComponent();
-
-            try {
-                ///new RequestApiId().run();
-            } catch (Exception e) {
-                System.Diagnostics.Debug.WriteLine(e.StackTrace);
-            }
         }
     }
 }

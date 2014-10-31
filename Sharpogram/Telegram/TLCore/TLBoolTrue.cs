@@ -22,5 +22,8 @@ namespace Telegram.TLCore
         public String toString() {
             return "boolTrue#997275b5";
         }
+
+        public override void serializeBody(System.IO.StreamWriter stream) { }
+        public override void deserializeBody(System.IO.BufferedStream stream, TLContext context) { }
     }
 }

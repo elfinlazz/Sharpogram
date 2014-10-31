@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="App.cs" />
     <Compile Include="Telegram\API\engine\AppInfo.cs" />
     <Compile Include="Telegram\API\engine\storage\AbsApiState.cs" />
     <Compile Include="Telegram\API\TLConfig.cs" />
