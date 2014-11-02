@@ -19,7 +19,14 @@ namespace Sharpogram
             base.OnStartup(e);
 
             // My init...
-
+            try
+            {
+                new RequestApiId().run();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+            }
         }
     }
 }

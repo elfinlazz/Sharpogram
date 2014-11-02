@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,13 +70,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Tests\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App.cs" />
+    <Compile Include="Telegram\API\engine\TelegramApi.cs" />
+    <Compile Include="Telegram\API\TLApiContext.cs" />
+    <Compile Include="Tests\ApiCallback.cs" />
+    <Compile Include="Tests\App.cs" />
+    <Compile Include="Tests\RequestApiId.cs" />
+    <Compile Include="Telegram\API\engine\AbsApiCallback.cs" />
     <Compile Include="Telegram\API\engine\AppInfo.cs" />
     <Compile Include="Telegram\API\engine\storage\AbsApiState.cs" />
+    <Compile Include="Tests\ApiState.cs" />
+    <Compile Include="Telegram\API\TLAbsUpdates.cs" />
     <Compile Include="Telegram\API\TLConfig.cs" />
     <Compile Include="Telegram\API\TLDcOption.cs" />
     <Compile Include="Telegram\MTProto\log\Logger.cs" />
@@ -82,8 +92,10 @@
     <Compile Include="Telegram\MTProto\state\ConnectionInfo.cs" />
     <Compile Include="Telegram\MTProto\state\KnownSalt.cs" />
     <Compile Include="Telegram\MTProto\state\MemoryProtoState.cs" />
+    <Compile Include="Telegram\MTProto\state\MTProtoApiState.cs" />
     <Compile Include="Telegram\MTProto\time\TimeOverlord.cs" />
     <Compile Include="Telegram\TLCore\StreamingUtils.cs" />
+    <Compile Include="Telegram\TLCore\TLBool.cs" />
     <Compile Include="Telegram\TLCore\TLBoolFalse.cs" />
     <Compile Include="Telegram\TLCore\TLBoolTrue.cs" />
     <Compile Include="Telegram\TLCore\TLBytes.cs" />
@@ -93,18 +105,19 @@
     <Compile Include="Telegram\TLCore\TLLongVector.cs" />
     <Compile Include="Telegram\TLCore\TLMethod.cs" />
     <Compile Include="Telegram\TLCore\TLObject.cs" />
+    <Compile Include="Telegram\TLCore\TLSaveDeveloperInfo.cs" />
     <Compile Include="Telegram\TLCore\TLStringVector.cs" />
     <Compile Include="Telegram\TLCore\TLVector.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="Tests\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Tests\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Ionic.Zlib\CRC32.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Tests\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -135,7 +148,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Tests\App.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,8 +19,8 @@ namespace Telegram.TLCore
  * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
  */
 public abstract class TLContext {
-    private  Dictionary<int, Type> registeredClasses = new Dictionary<int, Type>();
-    private  Dictionary<int, Type> registeredCompatClasses = new Dictionary<int, Type>();
+    private Dictionary<Int64, Type> registeredClasses = new Dictionary<Int64, Type>();
+    private Dictionary<Int64, Type> registeredCompatClasses = new Dictionary<Int64, Type>();
 
     public TLContext() {
         init();
@@ -34,15 +34,16 @@ public abstract class TLContext {
         return isSupportedObject(obj.getClassId());
     }
 
-    public Boolean isSupportedObject(uint classId) {
-        return registeredClasses.ContainsKey((int)classId);
+    public Boolean isSupportedObject(Int64 classId)
+    {
+        return registeredClasses.ContainsKey((Int64)classId);
     }
 
     public void registerClass<T>(Type tClass) {
         try {
             if(tClass == typeof(TLObject)) {
-                uint classId = (uint)typeof(T).GetField("CLASS_ID").GetValue(null);
-                registeredClasses.Add((int)classId, tClass);
+                Int64 classId = (Int64)typeof(T).GetField("CLASS_ID").GetValue(null);
+                registeredClasses.Add((Int64)classId, tClass);
             }
 
         } catch (Exception e) {
@@ -50,21 +51,23 @@ public abstract class TLContext {
         }
     }
 
-    public  void registerClass<T>(int clazzId, Type tClass) {
+    public void registerClass(Int64 clazzId, Type tClass)
+    {
         registeredClasses.Add(clazzId, tClass);
         
     }
 
     public void registerCompatClass<T>(Type tClass) where T : TLObject {
         try {
-            int classId = (int)tClass.GetField("CLASS_ID").GetValue(null);
+            Int64 classId = (Int64)tClass.GetField("CLASS_ID").GetValue(null);
             registeredCompatClasses.Add(classId, tClass);
         } catch (Exception e) {
             System.Diagnostics.Debug.WriteLine(e.StackTrace);
         }
     }
 
-    public  void registerCompatClass<T>(int clazzId, Type tClass) {
+    public void registerCompatClass<T>(Int64 clazzId, Type tClass)
+    {
         registeredCompatClasses.Add(clazzId, tClass);
     }
 
@@ -76,13 +79,14 @@ public abstract class TLContext {
         return deserializeMessage(new BufferedStream(new MemoryStream(data)));
     }
 
-    public TLObject deserializeMessage(int clazzId, /*InputStream*/BufferedStream stream) {
+    public TLObject deserializeMessage(Int64 clazzId, /*InputStream*/BufferedStream stream)
+    {
         try {
             if (clazzId == TLGzipObject.CLASS_ID) {
                 TLGzipObject obj = new TLGzipObject();
                 obj.deserializeBody(stream, this);
                 BufferedStream gzipInputStream = new BufferedStream(new GZipStream(new MemoryStream(obj.getPackedData()), CompressionMode.Decompress));
-                int innerClazzId = StreamingUtils.readInt(gzipInputStream);
+                Int64 innerClazzId = StreamingUtils.readInt(gzipInputStream);
                 return deserializeMessage(innerClazzId, gzipInputStream);
             }
 
@@ -128,7 +132,7 @@ public abstract class TLContext {
 
     public TLObject deserializeMessage(/*InputStream*/BufferedStream stream) {
         try{
-            int clazzId = StreamingUtils.readInt(stream);
+            Int64 clazzId = StreamingUtils.readInt(stream);
             return deserializeMessage(clazzId, stream);
         } catch(IOException e) {
             System.Diagnostics.Debug.WriteLine(e.StackTrace);
@@ -141,7 +145,7 @@ public abstract class TLContext {
 //            int clazzId = StreamingUtils.readInt(stream);
             byte[] byte_clazzId = new byte[] { };
             stream.Read(byte_clazzId, 0, (int)stream.Length);
-            int clazzId = Convert.ToInt32(byte_clazzId);
+            Int64 clazzId = Convert.ToInt32(byte_clazzId);
             if (clazzId == TLVector<Type>.CLASS_ID) {
 //                TLVector res = new TLVector();
                 TLVector<T> res = new TLVector<T>();
@@ -166,7 +170,7 @@ public abstract class TLContext {
 //            int clazzId = StreamingUtils.readInt(stream);
             byte[] byte_clazzId = new byte[] { };
             stream.Read(byte_clazzId, 0, (int)stream.Length);
-            int clazzId = Convert.ToInt32(byte_clazzId);
+            Int64 clazzId = Convert.ToInt32(byte_clazzId);
 
             if (clazzId == TLVector<int>.CLASS_ID) {
                 TLIntVector res = new TLIntVector();
@@ -188,7 +192,7 @@ public abstract class TLContext {
 
     public TLLongVector deserializeLongVector(/*InputStream*/BufferedStream stream) {
         try {
-            int clazzId = StreamingUtils.readInt(stream);
+            Int64 clazzId = StreamingUtils.readInt(stream);
             if (clazzId == TLVector<long>.CLASS_ID) {
                 TLLongVector res = new TLLongVector();
                 res.deserializeBody(stream, this);
@@ -209,7 +213,7 @@ public abstract class TLContext {
 
     public TLStringVector deserializeStringVector(/*InputStream*/BufferedStream stream) {
         try {
-            int clazzId = StreamingUtils.readInt(stream);
+            Int64 clazzId = StreamingUtils.readInt(stream);
             if (clazzId == TLVector<String>.CLASS_ID) {
                 TLStringVector res = new TLStringVector();
                 res.deserializeBody(stream, this);

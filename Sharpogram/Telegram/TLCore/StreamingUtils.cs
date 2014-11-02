@@ -24,7 +24,8 @@ namespace Telegram.TLCore
          * @param stream destination stream
          * @throws IOException
          */
-        public static void writeByte(int v, /*OutputStream*/ StreamWriter stream) {
+        public static void writeByte(Int64 v, /*OutputStream*/ StreamWriter stream)
+        {
             try {
                 /*stream.write(v);*/ stream.Write(v);
             } catch(IOException e) {
@@ -56,7 +57,8 @@ namespace Telegram.TLCore
          * @param stream destination stream
          * @throws IOException
          */
-        public static void writeInt(uint v, /*OutputStream*/ StreamWriter stream) {
+        public static void writeInt(Int64 v, /*OutputStream*/ StreamWriter stream)
+        {
             try {
                 writeByte((byte) (v & 0xFF), stream);
                 writeByte((byte) ((v >> 8) & 0xFF), stream);
@@ -304,34 +306,34 @@ namespace Telegram.TLCore
          * @return value
          * @throws IOException reading exception
          */
-        public static int readInt(/*InputStream*/ BufferedStream stream)
+        public static Int64 readInt(/*InputStream*/ BufferedStream stream)
         {
             try {
-//                int a = /*stream.read();*/ stream.Read();
+//                Int64 a = /*stream.read();*/ stream.Read();
                 byte[] byte_a = new byte[] {};
                 stream.Read(byte_a, 0, (int)stream.Length);
-                int a = Convert.ToInt32(byte_a);
+                Int64 a = Convert.ToInt32(byte_a);
                 if (a < 0) {
                     throw new IOException();
                 }
-//                int b = /*stream.read();*/ stream.Read(); 
+//                Int64 b = /*stream.read();*/ stream.Read(); 
                 byte[] byte_b = new byte[] { };
                 stream.Read(byte_b, 0, (int)stream.Length);
-                int b = Convert.ToInt32(byte_b);
+                Int64 b = Convert.ToInt32(byte_b);
                 if (b < 0) {
                     throw new IOException();
                 }
-//                int c = /*stream.read();*/ stream.Read(); 
+//                Int64 c = /*stream.read();*/ stream.Read(); 
                 byte[] byte_c = new byte[] { };
                 stream.Read(byte_c, 0, (int)stream.Length);
-                int c = Convert.ToInt32(byte_c);
+                Int64 c = Convert.ToInt32(byte_c);
                 if (c < 0) {
                     throw new IOException();
                 }
-//                int d = /*stream.read();*/ stream.Read(); 
+//                Int64 d = /*stream.read();*/ stream.Read(); 
                 byte[] byte_d = new byte[] { };
                 stream.Read(byte_d, 0, (int)stream.Length);
-                int d = Convert.ToInt32(byte_d);
+                Int64 d = Convert.ToInt32(byte_d);
                 if (d < 0) {
                     throw new IOException();
                 }
@@ -350,12 +352,12 @@ namespace Telegram.TLCore
          * @return value
          * @throws IOException reading exception
          */
-        public static long readUInt(/*InputStream*/ BufferedStream  stream) {
+        public static uint readUInt(/*InputStream*/ BufferedStream  stream) {
             try {
 //                long a = /*stream.read();*/ stream.Read(); 
                 byte[] byte_a = new byte[] { };
                 stream.Read(byte_a, 0, (int)stream.Length);
-                long a = Convert.ToUInt32(byte_a);
+                uint a = Convert.ToUInt32(byte_a);
 
                 if (a < 0) {
                     throw new IOException();
@@ -363,7 +365,7 @@ namespace Telegram.TLCore
 //                long b = /*stream.read();*/ stream.Read(); 
                 byte[] byte_b = new byte[] { };
                 stream.Read(byte_b, 0, (int)stream.Length);
-                long b = Convert.ToUInt32(byte_b);
+                uint b = Convert.ToUInt32(byte_b);
 
                 if (b < 0) {
                     throw new IOException();
@@ -371,7 +373,7 @@ namespace Telegram.TLCore
  //               long c = /*stream.read();*/ stream.Read(); 
                 byte[] byte_c = new byte[] { };
                 stream.Read(byte_c, 0, (int)stream.Length);
-                long c = Convert.ToUInt32(byte_c);
+                uint c = Convert.ToUInt32(byte_c);
 
                 if (c < 0) {
                     throw new IOException();
@@ -379,7 +381,7 @@ namespace Telegram.TLCore
   //              long d = /*stream.read();*/ stream.Read(); 
                 byte[] byte_d = new byte[] { };
                 stream.Read(byte_d, 0, (int)stream.Length);
-                long d = Convert.ToUInt32(byte_d);
+                uint d = Convert.ToUInt32(byte_d);
 
                 if (d < 0) {
                     throw new IOException();
@@ -702,7 +704,7 @@ namespace Telegram.TLCore
          */
         public static Boolean readTLBool(/*InputStream*/ BufferedStream  stream) {
             try {
-                int v = readInt(stream);
+                Int64 v = readInt(stream);
                 if (v == TLBoolTrue.CLASS_ID) {
                     return true;
                 } else if (v == TLBoolFalse.CLASS_ID) {
@@ -764,7 +766,8 @@ namespace Telegram.TLCore
          * @param src source bytes
          * @return int value
          */
-        public static int readInt(byte[] src) {
+        public static Int64 readInt(byte[] src)
+        {
             try {
                 return readInt(src, 0);
             } catch(IOException e) {
@@ -780,7 +783,8 @@ namespace Telegram.TLCore
          * @param offset offset in array
          * @return int value
          */
-        public static int readInt(byte[] src, int offset) {
+        public static Int64 readInt(byte[] src, int offset)
+        {
             try {
                 int a = src[offset + 0] & 0xFF;
                 int b = src[offset + 1] & 0xFF;

@@ -14,11 +14,13 @@ namespace Telegram.TLCore
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
     public abstract class TLMethod<T> : TLObject where T : TLObject {
+        /*
         public T deserializeResponse(byte[] data, TLContext context) {
             
             return deserializeResponse(new MemoryStream(data), context);
         }
-
-        public abstract T deserializeResponse(/*InputStream*/MemoryStream stream, TLContext context);
+        
+        public abstract T deserializeResponse(MemoryStream stream, TLContext context);
+        */
     }
 }

@@ -11,11 +11,12 @@ namespace Telegram.TLCore
      *
      * @author Korshakov Stepan <me@ex3ndr.com> for Java
      */
-    public class TLBoolFalse : TLObject {
+    public class TLBoolFalse : TLBool {
 
-        public static readonly uint CLASS_ID = 0xbc799737;
+        public static readonly Int64 CLASS_ID = 0xbc799737;
 
-        override public uint getClassId() {
+        override public Int64 getClassId()
+        {
             return CLASS_ID;
         }
 

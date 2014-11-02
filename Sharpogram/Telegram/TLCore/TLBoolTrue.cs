@@ -9,13 +9,14 @@ namespace Telegram.TLCore
     /**
      * Packed type of tl-bool true value
      *
-     * @author Korshakov Stepan <me@ex3ndr.com> for Java
+     * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public class TLBoolTrue : TLObject {
+    public class TLBoolTrue : TLBool {
 
-        public static readonly uint CLASS_ID = 0x997275b5;
+        public static readonly Int64 CLASS_ID = 0x997275b5;
 
-        override public uint getClassId() {
+        override public Int64 getClassId()
+        {
             return CLASS_ID;
         }
 

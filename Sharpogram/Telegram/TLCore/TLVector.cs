@@ -16,16 +16,17 @@ namespace Telegram.TLCore
      * @param <T> type of elements in vector
      * Based on (@author Korshakov Stepan <me@ex3ndr.com> for Java)
      */
-    public class TLVector<T> : TLObject/*, List<T>*/ {
+    public class TLVector<T> : /*List<T>, */TLObject {
 
-        public static readonly uint CLASS_ID = 0x1cb5c415;
+        public static readonly Int64 CLASS_ID = 0x1cb5c415;
         
        /* private Object destClass = Type.ReflectionOnlyGetType("TLObject", true, false);*/
         private Object destClass = typeof(TLObject);
 
         private List<T> items = new List<T>();
 
-        override public uint getClassId() {
+        override public Int64 getClassId()
+        {
             return CLASS_ID;
         }
 
@@ -76,7 +77,7 @@ namespace Telegram.TLCore
                 if (destClass == null) {
                     throw new IOException("DestClass not set");
                 }
-                int count = StreamingUtils.readInt(stream);
+                Int64 count = StreamingUtils.readInt(stream);
                 for (int i = 0; i < count; i++) {
                     if (destClass is int) {
                         items.Add((T)Convert.ChangeType(StreamingUtils.readInt(stream), typeof(T)));

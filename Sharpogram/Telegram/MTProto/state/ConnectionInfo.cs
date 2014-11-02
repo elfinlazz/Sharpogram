@@ -10,12 +10,12 @@ namespace Telegram.MTProto
 
     public class ConnectionInfo
     {
-        private int id;
-        private int priority;
+        private Int64 id;
+        private Int64 priority;
         private String address;
-        private int port;
+        private Int64 port;
 
-        public ConnectionInfo(int id, int priority, String address, int port)
+        public ConnectionInfo(Int64 id, Int64 priority, String address, Int64 port)
         {
             this.id = id;
             this.priority = priority;
@@ -23,7 +23,7 @@ namespace Telegram.MTProto
             this.port = port;
         }
 
-        public int getPriority()
+        public Int64 getPriority()
         {
             return priority;
         }
@@ -33,12 +33,12 @@ namespace Telegram.MTProto
             return address;
         }
 
-        public int getPort()
+        public Int64 getPort()
         {
             return port;
         }
 
-        public int getId()
+        public Int64 getId()
         {
             return id;
         }
